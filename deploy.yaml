@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: springboot-app
-  name: springboot-app
+    app: springboot-app2
+  name: springboot-app2
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: springboot-app
+      app: springboot-app2
   template:
     metadata:
       labels:
-        app: springboot-app
+        app: springboot-app2
     spec:
       containers:
-      - name: my-springboot-app
+      - name: my-springboot-app2
         image: sreekanth143/java-web-app-docker:pde
         imagePullPolicy: Always
         ports:
@@ -28,9 +28,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: springboot-app
-    k8s-app: springboot-app
-  name: springboot-app
+    app: springboot-app2
+    k8s-app: springboot-app2
+  name: springboot-app2
 spec:
   ports:
   - name: http
@@ -39,4 +39,4 @@ spec:
     targetPort: 8080
   type: LoadBalancer
   selector:
-    app: springboot-app
+    app: springboot-app2
